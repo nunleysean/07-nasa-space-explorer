@@ -35,11 +35,13 @@ getImagesButton.addEventListener('click', async () => {
           const galleryItem = document.createElement('div');
           galleryItem.className = 'gallery-item';
 
-          // Add image and details
+          // Add image and overlay with title and date
           galleryItem.innerHTML = `
             <img src="${item.url}" alt="${item.title}" />
-            <p><strong>${item.title}</strong></p>
-            <p>${item.date}</p>
+            <div class="overlay">
+              <p><strong>${item.title}</strong></p>
+              <p>${item.date}</p>
+            </div>
           `;
 
           gallery.appendChild(galleryItem);

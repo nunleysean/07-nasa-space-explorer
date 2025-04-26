@@ -104,23 +104,21 @@ button:hover {
 
 /* Gallery items */
 .gallery-item {
-  flex: 1 1 100%;  /* full width by default */
+  flex: 1 1 100%; /* full width by default */
   min-width: 280px;
   max-width: 500px;
   background: #1c1f2e; /* Dark card background */
-  padding: 10px;
+  padding: 0; /* Remove padding for better hover effect */
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  position: relative; /* Required for overlay positioning */
+  transition: transform 0.3s ease; /* Smooth scaling effect */
 }
 
-/* Three columns on wider screens */
-@media (min-width: 1000px) {
-  .gallery-item {
-    flex: 0 1 31%;
-  }
+/* Enlarge the gallery item on hover */
+.gallery-item:hover {
+  transform: scale(1.05);
 }
 
 .gallery-item img {
@@ -128,6 +126,39 @@ button:hover {
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
+}
+
+/* Overlay container */
+.gallery-item .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  color: #ffffff; /* White text for contrast */
+  padding: 10px;
+  text-align: center;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth fade-in effect */
+}
+
+/* Show overlay on hover */
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+/* Title and date styling */
+.gallery-item .overlay p {
+  margin: 5px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Three columns on wider screens */
+@media (min-width: 1000px) {
+  .gallery-item {
+    flex: 0 1 31%;
+  }
 }
 
 .gallery-item p {
