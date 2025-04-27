@@ -97,7 +97,7 @@ gallery.addEventListener('click', (event) => {
 // Function to fetch and display images
 getImagesButton.addEventListener('click', async () => {
   // Clear the gallery
-  gallery.innerHTML = '';
+  gallery.innerHTML = '<p>Loading images, please wait...</p>'; // Display loading message
 
   // Get the selected date range
   const startDate = startInput.value;
@@ -107,6 +107,9 @@ getImagesButton.addEventListener('click', async () => {
   try {
     const response = await fetch(`${API_URL}?api_key=${API_KEY}&start_date=${startDate}&end_date=${endDate}`);
     const data = await response.json();
+
+    // Clear the loading message
+    gallery.innerHTML = '';
 
     // Check if the response contains valid data
     if (Array.isArray(data)) {
