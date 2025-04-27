@@ -243,3 +243,13 @@ button:hover {
 .modal-close:hover {
   background: #565d7e; /* Slightly lighter on hover */
 }
+
+/* Space facts styling */
+.spaceFacts {
+  text-align: center; /* Center the text */
+  font-size: 16px; /* Adjust font size for readability */
+  line-height: 1.5; /* Tighter line spacing */
+  margin: 20px 0; /* Add spacing around the fact */
+  color: #d1d5db; /* Light gray text to match the theme */
+  font-style: italic; /* Add a subtle style to the text */
+}

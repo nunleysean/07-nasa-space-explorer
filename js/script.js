@@ -13,6 +13,39 @@ const API_URL = "https://api.nasa.gov/planetary/apod";
 const gallery = document.getElementById('gallery');
 const getImagesButton = document.querySelector('.filters button');
 
+// Space facts
+const spaceFacts = [
+  "The Sun is a 4.5-billion-year-old yellow dwarf star composed primarily of hydrogen and helium.",
+  "Earth is the only known planet to support life and possesses liquid water on its surface.",
+  "The Moon preserves a historical record of our solar system through its impact craters, ancient lava flows, and ice deposits.",
+  "Our solar system comprises eight planets and five officially recognized dwarf planets: Ceres, Pluto, Haumea, Makemake, and Eris.",
+  "Ceres, located in the asteroid belt between Mars and Jupiter, is the largest object in that region and accounts for about one-third of the belt's total mass.",
+  "Jupiter is the largest planet in our solar system, and over 1,300 Earths could fit inside it.",
+  "Neptune experiences massive storms, some so vast they could engulf Earth entirely.",
+  "Our solar system resides in the Orion Spur, a minor arm of the Milky Way galaxy, situated between the Sagittarius and Perseus arms.",
+  "It takes approximately 230 million years for our solar system to complete one orbit around the center of the Milky Way.",
+  "The solar system contains over 1.3 million asteroids, about 4,000 comets, and more than 300 moons orbiting planets and dwarf planets.",
+  "Mars is the only planet inhabited solely by robots, with multiple NASA rovers exploring its surface.",
+  "The James Webb Space Telescope has observed galaxies whose light has traveled over 12 billion years to reach us.",
+  "The International Space Station (ISS) has been continuously inhabited since November 2000.",
+  "NASA's 'Veggie' experiment aboard the ISS has successfully grown edible plants like lettuce and mustard greens in space."
+];
+
+// Find the spaceFacts div
+const spaceFactsDiv = document.querySelector('.spaceFacts');
+
+// Function to display a random space fact
+function displayRandomSpaceFact() {
+  // Select a random fact from the spaceFacts array
+  const randomFact = spaceFacts[Math.floor(Math.random() * spaceFacts.length)];
+  
+  // Insert the fact into the spaceFacts div
+  spaceFactsDiv.textContent = `SPACE FACT: ${randomFact}`;
+}
+
+// Call the function to display a random fact when the page loads
+displayRandomSpaceFact();
+
 // Create the modal elements
 const modal = document.createElement('div');
 modal.className = 'modal';
