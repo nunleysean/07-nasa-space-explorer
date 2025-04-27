@@ -13,6 +13,54 @@ const API_URL = "https://api.nasa.gov/planetary/apod";
 const gallery = document.getElementById('gallery');
 const getImagesButton = document.querySelector('.filters button');
 
+// Create the modal elements
+const modal = document.createElement('div');
+modal.className = 'modal';
+modal.innerHTML = `
+  <div class="modal-content">
+    <button class="modal-close">Close</button>
+    <img src="" alt="" />
+    <h2></h2>
+    <p class="modal-date"></p>
+    <p class="modal-explanation"></p>
+  </div>
+`;
+document.body.appendChild(modal);
+
+// Find modal elements
+const modalImage = modal.querySelector('img');
+const modalTitle = modal.querySelector('h2');
+const modalDate = modal.querySelector('.modal-date');
+const modalExplanation = modal.querySelector('.modal-explanation');
+const modalClose = modal.querySelector('.modal-close');
+
+// Function to open the modal
+function openModal(imageUrl, title, date, explanation) {
+  modalImage.src = imageUrl;
+  modalImage.alt = title;
+  modalTitle.textContent = title;
+  modalDate.textContent = `Date: ${date}`;
+  modalExplanation.textContent = explanation;
+  modal.style.display = 'flex'; // Show the modal
+}
+
+// Function to close the modal
+modalClose.addEventListener('click', () => {
+  modal.style.display = 'none'; // Hide the modal
+});
+
+// Add click event to gallery items
+gallery.addEventListener('click', (event) => {
+  const galleryItem = event.target.closest('.gallery-item');
+  if (galleryItem) {
+    const imageUrl = galleryItem.querySelector('img').src;
+    const title = galleryItem.querySelector('.overlay p strong').textContent;
+    const date = galleryItem.querySelector('.overlay p:nth-child(2)').textContent;
+    const explanation = galleryItem.dataset.explanation; // Explanation stored in data attribute
+    openModal(imageUrl, title, date, explanation);
+  }
+});
+
 // Function to fetch and display images
 getImagesButton.addEventListener('click', async () => {
   // Clear the gallery
@@ -34,6 +82,7 @@ getImagesButton.addEventListener('click', async () => {
         if (item.media_type === 'image') {
           const galleryItem = document.createElement('div');
           galleryItem.className = 'gallery-item';
+          galleryItem.dataset.explanation = item.explanation; // Store explanation in data attribute
 
           // Add image and overlay with title and date
           galleryItem.innerHTML = `

@@ -118,13 +118,13 @@ button:hover {
 
 /* Enlarge the gallery item on hover */
 .gallery-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.1); /* Increased enlargement effect */
 }
 
 .gallery-item img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: cover;https://api.nasa.gov/planetary/apod
   border-radius: 4px;
 }
 
@@ -134,7 +134,7 @@ button:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.4); /* Slightly more transparent black background */
   color: #ffffff; /* White text for contrast */
   padding: 10px;
   text-align: center;
@@ -180,4 +180,66 @@ button:hover {
   font-size: 48px;
   margin-bottom: 20px;
   color: #ffffff; /* White icon */
+}
+
+/* Modal container */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Above other elements */
+}
+
+/* Modal content */
+.modal-content {
+  background: #1c1f2e; /* Dark background to match the page */
+  color: #ffffff; /* White text */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90%; /* Ensure the modal fits within the view screen */
+  overflow-y: auto; /* Add scroll if content overflows */
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 60%; /* Ensure the image doesn't exceed 60% of the modal height */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  object-fit: contain; /* Ensure the image scales proportionally */
+}
+
+.modal-content h2,
+.modal-content .modal-date,
+.modal-content .modal-explanation {
+  margin: 10px 0; /* Add spacing between text elements */
+  word-wrap: break-word; /* Ensure long text wraps */
+}
+
+/* Modal close button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #3a3f5c; /* Dark button background */
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.modal-close:hover {
+  background: #565d7e; /* Slightly lighter on hover */
 }
